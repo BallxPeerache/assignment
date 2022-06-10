@@ -117,11 +117,14 @@ public class Assignment {
 			try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
 				String line;
 				while ((line = br.readLine()) != null) {
-					if (!strNumberList.contains(line) && !line.trim().equals("")) {
+					line = line.trim();
+					if (!strNumberList.contains(line) && !line.equals("")) {
 						strNumberList.add(line);
 						sortNumberList.add((double) Integer.parseInt(line));
 					}
 				}
+			} catch (Exception e) {
+				System.out.println(e);
 			}
 			Collections.sort(sortNumberList);
 			FileOutputStream fileOS = new FileOutputStream(outputFile);
